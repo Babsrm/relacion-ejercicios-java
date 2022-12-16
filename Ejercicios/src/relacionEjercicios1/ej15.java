@@ -16,6 +16,7 @@ public class ej15 {
 		double resultado = 273.15 + num;
 		
 		System.out.printf("%.2f grados celsius equivalen a %.2f Kelvin.", num, resultado);
+		teclado.close();
 	}
 
 }

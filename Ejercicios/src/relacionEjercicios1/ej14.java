@@ -36,7 +36,7 @@ public class ej14 {
 							+"%d + %d + %d + %d + %d + %d + %d +%d = %d.",
 							dia, mes, ano, cifraDia1, cifraDia2, cifraMes1, cifraMes2, cifraAno1, cifraAno2, cifraAno3, cifraAno4, resultado
 		);
-
+		teclado.close();
         
 	}
 
