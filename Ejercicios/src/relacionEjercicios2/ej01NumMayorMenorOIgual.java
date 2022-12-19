@@ -2,7 +2,7 @@ package relacionEjercicios2;
 
 import java.util.Scanner;
 
-public class ej01 {
+public class ej01NumMayorMenorOIgual {
 public static void main(String[] args) {
 	// Algoritmo que pida dos enteros y que indique el mayor y el menor, o si ambos son iguales. 
 	Scanner teclado = new Scanner(System.in);

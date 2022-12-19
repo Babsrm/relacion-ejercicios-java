@@ -2,7 +2,7 @@ package relacionEjercicios2;
 
 import java.util.Scanner;
 
-public class ej03 {
+public class ej03CualEsElNumeroConValorCentral {
 
 	public static void main(String[] args) {
 		//  Algoritmo que pida tres números distintos de tipo float e indique cual es el que ocupa la posición central si los tres se ordenasen. 

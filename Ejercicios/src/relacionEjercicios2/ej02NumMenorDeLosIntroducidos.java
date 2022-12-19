@@ -2,7 +2,7 @@ package relacionEjercicios2;
 
 import java.util.Scanner;
 
-public class ej02 {
+public class ej02NumMenorDeLosIntroducidos {
 
 	public static void main(String[] args) {
 		//  Algoritmo que pida 3 números e indique cual es el menor de los tres.
