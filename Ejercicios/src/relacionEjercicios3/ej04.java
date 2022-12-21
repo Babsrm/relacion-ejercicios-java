@@ -32,9 +32,9 @@ public class ej04 {
 		for ( ; num1<=num2; num1++) {
 			if ( (num1%2) != 0) {
 				System.out.println(num1);
-			}
+			}teclado.close();
 			
 		}
-		teclado.close();
+		
 	}
 }

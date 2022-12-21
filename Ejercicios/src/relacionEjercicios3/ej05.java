@@ -17,11 +17,14 @@ public class ej05 {
 			System.out.println("El número introducido no es válido.");
 			System.out.println("Por favor, introduzca un número positivo.");
 			num = teclado.nextInt();}
+		int resultado = 0;
 		
-		for ( int i=0 ; i <= num; i++) {
-			System.out.printf("%d\n", i+i); //meter variable aqui para ir metiendo el resultado
+		for ( int i=1 ; i <= num; i++) {
+			resultado = i + resultado;
+			System.out.printf("%d\n", resultado); 
 		}
-		
+		System.out.printf("La sumatoria de %d es %d.", num, resultado);
+		teclado.close();
 	}
 
 }
