@@ -2,7 +2,7 @@ package relacionEjercicios3;
 
 import java.util.Scanner;
 
-public class ej15 {
+public class ej15EsPrimoONo {
 
 	public static void main(String[] args) {
 		// Algoritmo que pida un número natural y determine si es primo o no.

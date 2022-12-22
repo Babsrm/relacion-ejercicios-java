@@ -17,13 +17,13 @@ public class ej08 {
 		aleatorio = generadorAleatorio.nextInt(1, 10); // este ya nos deja elegir el rango directamente
 		
 		while (num<0 || num>10) {
-			System.out.println("El número introducido no es válido.");
+			System.err.println("El número introducido no es válido.");
 			System.out.println("Por favor, introduzca un número entre 1 y 10.");
 			num = teclado.nextInt();
 		}
 		
 		while ( num != aleatorio) {
-			System.out.println("El número introducido no es correcto!");
+			System.err.println("El número introducido no es correcto!");
 			System.out.println("Inténtalo de nuevo: ");
 			num = teclado.nextInt();
 		}
