@@ -10,63 +10,17 @@ public static void main(String[] args) throws InterruptedException {
 	
 	  Scanner teclado = new Scanner(System.in);
 
-      System.out.println("Vamos a ajustar la hora: ");
-
-      do {
-       System.out.println("¿Qué hora es?");
-         horas = teclado.nextInt();
-
-         if (horas<0 || horas>23) {
-             System.out.println("Usa numeros entre 0 y 23.");
-         }
-     } while (horas<0 || horas>23);
-
-         do {
-         System.out.println("Cuántos minutos?");
-         minutos = teclado.nextInt();
-
-          if (minutos<0 || minutos>59) {
-             System.out.println("Usa numeros entre 0 y 59.");
-         }
-     } while (minutos<0 || minutos>59);
-
-         do{
-          System.out.println("¿Cuántos segundos?");
-         segundos = teclado.nextInt();
-
-          if (segundos<0 || segundos>59) {
-             System.out.println("Usa numeros entre 0 y 59.");
-         }
-     } while (segundos<0 || segundos>59);
-
-     while (true) { //mientras que los datos sean verdaderos
-
-//          System.out.print(horas+":"); //esto me lo escribe en este formato 7:7:7
-//          System.out.print(minutos+":");
-//          System.out.println(segundos);
-    	 //hay una linea para borrar el reloj y que se "sobreponga", pareciendo un reloj digital
-    	 //esta linea se escribe al final, después de ponerle la actualización de tiempo, el threadsleep
-    	 System.out.printf("%02d:%02d:%02d", horas, minutos, segundos);
-
-          segundos++;
-
-          if (segundos == 60) {
-             segundos = 0;
-             minutos++;
-
-             	if (minutos == 60) {
-             		minutos=0;
-             		horas++;
-
-             		if (horas == 24) {
-             			horas=0;   
-          }
-      }
-  }
-
-		Thread.sleep(1000);
-		System.out.printf("\b\b\b\b\b\b\b\b");
+	  	for (horas = 0; horas <24; horas ++) {
+	  		for (minutos = 0; minutos < 60; minutos++) {
+	  			for (segundos = 0; segundos <60; segundos++) {
+	  				System.out.printf("%02d:%02d:%02d");
+	  				Thread.sleep(1000);
+	  				System.out.printf("\b\b\b\b\b\b\b\b"); //borra para "sobreescribir" la hora de nuevo en el bucle
+	  			}
+	  		}//si queremos que se reinicie a las 24h, metemos el bucle for al completo en un do while, siendo while(true)
+	  	}
+  
 		teclado.close();
 	}    
 }
-}
+
