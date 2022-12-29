@@ -1,4 +1,4 @@
-package relacionEjercicios4;
+package relacionEjercicios4ConFunciones;
 
 import java.util.Scanner;
 

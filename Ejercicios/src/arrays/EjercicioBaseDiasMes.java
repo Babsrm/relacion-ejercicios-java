@@ -13,10 +13,10 @@ public static void main(String[] args) {
 	do {
 		Scanner teclado = new Scanner(System.in);
 		System.out.println("Introduce el número del mes (1-12).");
-		 mes = teclado.nextInt();
+		 mes = teclado.nextInt();teclado.close();
 	} while (mes<1 || mes>12);
 	
 	System.out.printf("El mes %d (%s) tiene %d días.", mes, meses[mes-1],dias[mes-1]);
-	teclado.close();
+	
 }
 }

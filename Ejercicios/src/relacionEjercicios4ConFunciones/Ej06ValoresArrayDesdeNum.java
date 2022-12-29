@@ -1,4 +1,4 @@
-package relacionEjercicios4;
+package relacionEjercicios4ConFunciones;
 
 import java.util.Scanner;
 
@@ -27,6 +27,6 @@ public class Ej06ValoresArrayDesdeNum {
 		LibreriaFunciones.mostrarVector(array);
 		System.out.printf("El array desde que encuentra la posición >=%d es: ", a);
 		LibreriaFunciones.mostrarDesdeValorMayorQueA(array, a);
-	}
+		teclado.close();}
 
 }
