@@ -58,9 +58,9 @@ public class LibreriaFunciones {
 
 	public static void mostrarIntervalo(double vector[], double a, double b) {
 		if (a > b) {
-			double var = b;
+			double aux = b;
 			b = a;
-			a = var;
+			a = aux;
 		}
 		for (int i = 0; i < vector.length; i++) {
 			if (vector[i] >= a && vector[i] <= b) {
@@ -109,4 +109,9 @@ public class LibreriaFunciones {
 			}else {System.out.println("Los vectores no son paralelos.");
 			}
 		}
+	
+	public static void arrayCapicua (int vector[]) {
+		int aux;
+		
+	}
 }
