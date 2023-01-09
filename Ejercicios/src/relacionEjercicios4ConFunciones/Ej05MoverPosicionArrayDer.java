@@ -25,7 +25,7 @@ public class Ej05MoverPosicionArrayDer {
 		System.out.print("El array introducido es: ");
 		LibreriaFunciones.mostrarVector(array);
 		LibreriaFunciones.moverPosicionDer(array);
-		System.out.print("El array rotado es: ");
+		System.out.print("El array rotado una posición a la derecha es: ");
 		LibreriaFunciones.mostrarVector(array);
 		
 		teclado.close();

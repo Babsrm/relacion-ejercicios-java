@@ -2,6 +2,8 @@ package funciones;
 
 import java.util.Scanner;
 
+import javax.swing.plaf.FontUIResource;
+
 public class LibreriaFunciones {
 	public static void pedirVector(double vector[]) {
 		Scanner teclado = new Scanner(System.in);
@@ -63,7 +65,7 @@ public class LibreriaFunciones {
 			a = aux;
 		}
 		for (int i = 0; i < vector.length; i++) {
-			if (vector[i] >= a && vector[i] <= b) {
+			if (vector[i] >= a && vector[i] < b) {
 				System.out.println(vector[i] + " ");
 			}
 
@@ -72,13 +74,17 @@ public class LibreriaFunciones {
 
 	public static void moverPosicionIzq(int vector[]) {
 		int aux = vector[0];
-		for (int i = 0; i < vector.length - 1; i++) { // la condicion tiene que ser hasta el penúltimo porque en el
-														// último he de poner el primero
-			vector[i] = vector[i + 1]; // v[1]=v[2], osea voy moviendo los resultados a la izq, y el[0] que tiene que
-										// irse al final, lo guardo en una variable auxiliar y, una vez hecho el bucle,
-										// la sustituyo.
+		for (int i = 0; i < vector.length - 1; i++) { // la condicion tiene que ser hasta el penúltimo porque en el último he de poner el primero
+			vector[i] = vector[i + 1]; // v[1]=v[2], osea voy moviendo los resultados a la izq, y el[0] que tiene que irse al final, lo guardo en una variable auxiliar y, una vez hecho el bucle, la sustituyo.
 		}
-		vector[vector.length - 1] = aux; // si la longitud es 5, hay que poner el 4; de ahí el restarle 1
+		vector[vector.length - 1] = aux; // si la longitud es 5 pero la posición máxima es 4 (porque empezamos por la posición 0); de ahí el restarle 1
+	}
+	
+	public static void moverPosicionIzqConPos(int vector[], int rotacion) {
+		for (int i = 0; i < rotacion; i++) { 
+			LibreriaFunciones.moverPosicionIzq(vector);
+		} //lo que pido es que repita la funcion de mover la posicion a la izquierda tantas veces como el usuario haya indicado con la variable rotacion.
+		//no es del todo eficiente porque si el array es muy grande y la rotación también lo es, pecaría. en ese caso, habría que crear una función nueva. Esta forma es el equilibrio entre reutilización de código (funciones) y eficiencia.
 	}
 
 	public static void moverPosicionDer(int vector[]) {
@@ -88,30 +94,86 @@ public class LibreriaFunciones {
 		}
 		vector[0] = aux;
 	}
+	
+	public static void moverPosicionDerConPos(int vector[], int rotacion) {
+		for (int i = 0; i < rotacion; i++) { 
+			LibreriaFunciones.moverPosicionDer(vector);
+			}}
 
 	public static void mostrarDesdeValorMayorQueA(int vector[], int a) {
-		for (int i = 0; i < vector.length; i++) {
+		int i = 0;
+		for (i = 0; i < vector.length; i++) {
 			if (vector[i] >= a) {
-				System.out.print(vector[i] + " ");
+				break; //me salgo del bucle al llegar al número
 			}
-
 		}
-	}
+		for (int j = i; j < vector.length; j++) {
+			System.out.printf("%d ", vector[j]);
+		} //aqui pinto el array j que empieza desde la posición en la que se encontró el número necesario para salir del bucle
+		}
 	
-	public static void vectorParalelo (double vector1[], double vector2[]) {
-		int contador = 0;
-		for (int i = 0; i < vector1.length; i++) {
-			if (vector2[i] % vector1[i] == 0) {
-				contador++;}
+	
+	public static boolean vectorParalelo(double vector1[], double vector2[]) { //con booleanos
+		if (vector1.length != vector2.length) {
+			return false; //y se sale directamente de la función. Esto es para comprobar que sean iguales de longitud los arrays. Aunque lo haya preguntado en el ejercicio, es bueno hacer esta comprobación aquí porque obligo a la comprobación aunque la función se haya ejecutado en otros lugares.
+		}
 			
-			}if (contador == vector1.length) {
-				System.out.println("Los vectores son paralelos.");
-			}else {System.out.println("Los vectores no son paralelos.");
+		boolean sonParalelos= true;
+		double factor = vector1[0] / vector2[0]; //es el factor por el que cada divisor tiene que coincidir para ser paralelo
+		
+		for (int i = 1; i < vector1.length && sonParalelos; i++) { //se repite el bucle mientras sea verdadero que son paralelos y que esté dentro de rango
+			if (vector1[i] / vector2[i] != factor
+					&&
+				(vector1[i] != 0 || vector2[i] != 0) //comprobaciones de divisiones con posibles ceros que tenga
+				) {									// el array
+			
+				sonParalelos = false;
 			}
 		}
-	
-	public static void arrayCapicua (int vector[]) {
-		int aux;
-		
+		return sonParalelos;
 	}
-}
+	
+	public static boolean arrayCapicua (int array[]) {
+		boolean esCapicua = true;
+		
+		for (int i = 0, j = array.length -1; i < (array.length/2) && esCapicua; i++, j--) {
+			if (array[i] != array[j]) {
+				esCapicua = false;
+			}
+		}
+		return esCapicua;
+	}
+	
+	public static int [] arrayInverso (int array[], int longitud) {
+		int arrayInverso[] = new int [longitud] ;
+		// for (int i=0, j=array.length-1 ; i<array.length; i++, j--) {
+		//     arrayInverso[i] = array[j];    --- es lo mismo escrito de otra manera que quizás se entienda mejor
+		for (int i = 0; i < longitud; i++) {
+			 arrayInverso[longitud-1 -i]= array[i] ;
+		}
+		return arrayInverso;
+	}
+	
+	public static int [] concatenarArrays (int array1[], int array2[], int longitud1, int longitud2) {
+		int arrayConcatenado[] = new int [longitud1 + longitud2];
+		for (int i = 0; i < longitud1 ; i++) {
+			arrayConcatenado[i] = array1[i];
+		}
+		for (int j = longitud1; j < arrayConcatenado.length; j++) {
+			arrayConcatenado[j] = array2[j - longitud1];
+		}
+		return arrayConcatenado;
+		}
+	
+	public static int [] sumaArrays (int array1[], int array2[]) {
+		if (array1.length != array2.length) {
+			System.err.println("Los índices de los arrays son diferentes. El programa se cerrará. ");}
+		int arraySuma[] = new int [array1.length];
+		for (int i = 0; i < arraySuma.length; i++) {
+			arraySuma[i] = array1[i] + array2[i];
+			}
+		return arraySuma;
+	} 
+	
+	}
+

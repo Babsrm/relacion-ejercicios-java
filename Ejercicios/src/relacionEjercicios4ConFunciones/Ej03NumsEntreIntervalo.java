@@ -6,7 +6,7 @@ import funciones.LibreriaFunciones;
 
 public class Ej03NumsEntreIntervalo {
 	public static void main(String[] args) {
-		//Dado un array de reales del tamaño N, visualizar por pantalla todos los elementos del mismo cuyo valor pertenezca al intervalo [a,b].
+		//Dado un array de reales del tamaño N, visualizar por pantalla todos los elementos del mismo cuyo valor pertenezca al intervalo [a,b).
 		Scanner teclado = new Scanner(System.in);
 		double array[];
 		int longitud;

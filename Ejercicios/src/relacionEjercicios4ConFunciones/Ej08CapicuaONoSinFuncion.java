@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import funciones.LibreriaFunciones;
 
-public class Ej08CapicuaONo {
+public class Ej08CapicuaONoSinFuncion {
 
 	public static void main(String[] args) {
 		// Dado un array de enteros de tamaño N, decir si es capicúa o no, es decir, si por ejemplo el array es: 5 2 1 2 5, el resultado debe ser “verdad”(se debe tener en cuenta que el tamaño el array puede ser par o impar).
@@ -20,7 +20,6 @@ public class Ej08CapicuaONo {
 		System.out.println("Introduce el vector:");
 		LibreriaFunciones.pedirVector(array);
 		
-		// System.out.println("aaaa "+array.length); comprobación de longitud de array
 		if (longitud%2 != 0) {
 			System.out.println("Array con índice impar.");
 			int aux = (int)Math.ceil (longitud/2); //posición céntrica del array
