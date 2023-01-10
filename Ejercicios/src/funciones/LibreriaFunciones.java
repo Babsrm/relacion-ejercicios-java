@@ -167,13 +167,13 @@ public class LibreriaFunciones {
 	
 	public static int [] sumaArrays (int array1[], int array2[]) {
 		if (array1.length != array2.length) {
-			System.err.println("Los índices de los arrays son diferentes. El programa se cerrará. ");}
+			System.err.println("Los índices de los arrays son diferentes. El programa se cerrará. ");
+			return null;}
 		int arraySuma[] = new int [array1.length];
 		for (int i = 0; i < arraySuma.length; i++) {
 			arraySuma[i] = array1[i] + array2[i];
 			}
 		return arraySuma;
 	} 
-	
 	}
 
