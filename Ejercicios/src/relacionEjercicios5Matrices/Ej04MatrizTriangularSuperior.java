@@ -36,9 +36,22 @@ public class Ej04MatrizTriangularSuperior {
 		libreriaMatriz.mostrarMatriz(matriz);
 		
 		if (libreriaMatriz.comprobarTriangularSuperior(matriz)) {
-			System.out.println("La matriz no es triangular superior.");
-		} else { System.out.println("La matriz es triangular superior.");}
+			System.out.println("La matriz es triangular superior.");
+		} else { System.out.println("La matriz no es triangular superior.");}
 		
+		//mejora:
+//		if (libreriaMatriz.comprobarTriangularSuperior(matriz) 
+//				&& 
+//				libreriaMatriz.comprobarTriangularInferior(matriz))
+//			System.out.println("Es la matriz diagonal o nula.");
+//		else if (libreriaMatriz.comprobarTriangularInferior(matriz)) {
+//			System.out.println("La matriz es triangular inferior.");
+//		} else if (libreriaMatriz.comprobarTriangularSuperior(matriz)) {
+//			System.out.println("La matriz es triangular superior.");
+//		} else { 
+//			System.out.println("Es una matriz normal.");
+//		}
+//		
 		teclado.close();
 		
 	}

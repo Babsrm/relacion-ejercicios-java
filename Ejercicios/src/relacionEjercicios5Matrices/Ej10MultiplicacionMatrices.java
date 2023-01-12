@@ -11,7 +11,7 @@ public class Ej10MultiplicacionMatrices {
 		System.out.println("El usuario introducirá dos matrices y el programa hará la multiplicación de ambas.");
 		
 		Scanner teclado = new Scanner(System.in);
-		
+		System.out.println("Primera matriz.");
 		System.out.println("Introduce el número de filas: ");
 		int filas1 = teclado.nextInt();
 		System.out.println("Introduce el número de columnas: ");
@@ -19,6 +19,7 @@ public class Ej10MultiplicacionMatrices {
 		double matriz1[][] = new double [filas1][columnas1];
 		libreriaMatriz.pedirMatriz(matriz1);
 		
+		System.out.println("Segunda matriz.");
 		System.out.println("Introduce el número de filas: ");
 		int filas2 = teclado.nextInt();
 		System.out.println("Introduce el número de columnas: ");

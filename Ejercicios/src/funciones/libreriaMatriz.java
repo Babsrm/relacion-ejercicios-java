@@ -1,6 +1,5 @@
 package funciones;
 
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class libreriaMatriz {
@@ -63,7 +62,7 @@ public class libreriaMatriz {
 		return true;
 	}
 	
-	public static void contarNumerosEnElementos (double matriz[][], double a) {
+	public static int contarNumerosEnElementos (double matriz[][], double a) {
 		int contador = 0;
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz[0].length; j++) {
@@ -71,35 +70,37 @@ public class libreriaMatriz {
 					contador++;
 				}
 			}
-		}System.out.printf("El número de elementos iguales para a = %.2f es %d.", a, contador);
+		}return contador;
 	} 
 	
 	public static boolean comprobarTriangularSuperior (double matriz[][]) {
-		if (matriz.length != matriz[0].length) {
-			System.err.println("Error, no se puede calcular una matriz triangular si no es cuadrada. El número de filas ha de ser igual al número de columnas. El programa se cerrará. Inténtelo de nuevo. ");
+		if (matriz.length != matriz[0].length
+				||	matriz == null
+				||	matriz.length<=1) {
 			return false;}
 		for (int i = 1; i < matriz.length; i++) {
 			for (int j = 0; j < matriz[0].length - i; j++) {
 				if (matriz[i][j] == 0) {
-					return false;
+					return true;
 				}
-			}
+			} //siempre está por debajo de la diagonal (1,1), (2,2), (3,3)...
 		}
-		return true;
+		return false;
 	}
 	
 	public static boolean comprobarTriangularInferior (double matriz[][]) {
-		if (matriz.length != matriz[0].length) {
-			System.err.println("Error, no se puede calcular una matriz triangular si no es cuadrada. El número de filas ha de ser igual al número de columnas. El programa se cerrará. Inténtelo de nuevo. ");
+		if (matriz.length != matriz[0].length
+				||	matriz == null
+				||	matriz.length<=1) {
 			return false;}
 		for (int i = 0; i < matriz.length -1; i++) {
 			for (int j = i + 1; j <matriz[0].length ; j++) {
 				if (matriz[i][j] == 0) {
-					return false;
+					return true;
 				}
-			}
+			} //los ceros siempre están por encima de la diagonal
 		}
-		return true;
+		return false;
 	}
 	
 	public static int valorMaximoEnMatriz (int matriz[][]) {
@@ -122,7 +123,7 @@ public class libreriaMatriz {
 				totalElems++;
 				sumaElems = sumaElems + matriz[i][j];		
 			}
-		} media = sumaElems/totalElems;
+		} media = sumaElems/totalElems;  // sumaElems/(matriz.length * matriz[0].length)
 		return media;
 	}
 	
@@ -131,7 +132,8 @@ public class libreriaMatriz {
 		vector = new double [matriz[0].length];
 		double dividendo = 0;
 		double aux = 0;
-		
+		//la media aritmetica se calcula calculando las medias por columnas, dando como resultado un vector
+		//recorro la matriz por columnas
 		for (int j = 0; j < matriz[0].length; j++) {
 			for (int i = 0; i < matriz.length; i++) {
 
@@ -139,7 +141,26 @@ public class libreriaMatriz {
 			}
 			aux = dividendo/matriz.length;
 			vector[j] = aux;
-			dividendo=0;
+			dividendo=0; //reseteo el valor para que no se acumule en el siguiente bucle
+		}
+		return vector;
+	}
+	
+	public static double[] vectorMediasFilas (int matriz[][]) {
+		double vector[];
+		vector = new double [matriz[0].length];
+		double dividendo = 0;
+		double aux = 0;
+		//esta media es calculada por la media de las filas, dando como resultado un vector
+		//recorro la matriz por columnas
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0;  j< matriz[0].length; j++) {
+
+				dividendo = dividendo + matriz[i][j];
+			}
+			aux = dividendo/matriz[0].length;
+			vector[i] = aux;
+			dividendo=0; //reseteo el valor para que no se acumule en el siguiente bucle
 		}
 		return vector;
 	}
@@ -147,7 +168,7 @@ public class libreriaMatriz {
 	public static double [][] convertirATraspuesta (double matriz[][]) {
 		double traspuesta[][];
 		traspuesta = new double [matriz[0].length][matriz.length];
-		
+		//recorro la matriz original y cambio los índices en la traspuesta
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz[0].length; j++) {
 				 traspuesta[j][i] = matriz[i][j];
@@ -159,8 +180,8 @@ public class libreriaMatriz {
 		double matrizMultiplicada [][];
 		matrizMultiplicada = new double [filas1][columnas2];
 		
-		for (int i = 0; i < matrizMultiplicada.length; i++) {
-			for (int j = 0; j < matrizMultiplicada[0].length; j++) {
+		for (int i = 0; i < filas1; i++) {
+			for (int j = 0; j < columnas2; j++) {
 				matrizMultiplicada[i][j]=0; //reseteo el valor cada vez que cambia de casilla
 				for (int k = 0; k < matriz2.length; k++) { //para que coja el valor correcto de la multiplicación
 					matrizMultiplicada[i][j] =matrizMultiplicada[i][j]+ (matriz1[i][k]*matriz2[k][j]);

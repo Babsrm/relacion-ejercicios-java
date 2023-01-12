@@ -35,9 +35,17 @@ public class Ej05MatrizTriangularInferior {
 		System.out.println("La matriz introducida es: ");
 		libreriaMatriz.mostrarMatriz(matriz);
 		
-		if (libreriaMatriz.comprobarTriangularInferior(matriz)) {
-			System.out.println("La matriz no es triangular inferior.");
-		} else { System.out.println("La matriz es triangular inferior.");}
+		if (libreriaMatriz.comprobarTriangularSuperior(matriz) 
+				&& 
+				libreriaMatriz.comprobarTriangularInferior(matriz))
+			System.out.println("Es la matriz diagonal o nula.");
+		else if (libreriaMatriz.comprobarTriangularInferior(matriz)) {
+			System.out.println("La matriz es triangular inferior.");
+		} else if (libreriaMatriz.comprobarTriangularSuperior(matriz)) {
+			System.out.println("La matriz es triangular superior.");
+		} else { 
+			System.out.println("Es una matriz normal.");
+		}
 		
 		teclado.close();
 		

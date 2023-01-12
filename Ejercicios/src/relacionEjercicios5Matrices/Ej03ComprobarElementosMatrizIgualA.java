@@ -25,7 +25,10 @@ public class Ej03ComprobarElementosMatrizIgualA {
 		System.out.println("La matriz resultante es la siguiente: ");
 		libreriaMatriz.mostrarMatriz(matriz);
 		
-		libreriaMatriz.contarNumerosEnElementos(matriz, a);
+		int veces = libreriaMatriz.contarNumerosEnElementos(matriz, a);
+		
+		System.out.println("El número de elementos iguales para a = " +a +" es " +veces +".");
+		;
 		
 		teclado.close();
 	}
