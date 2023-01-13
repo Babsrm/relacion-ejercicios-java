@@ -1,5 +1,6 @@
 package funciones;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class libreriaMatriz {
@@ -188,5 +189,62 @@ public class libreriaMatriz {
 				}				
 			}			
 		}return matrizMultiplicada;
+	}
+	
+	public static int cuantosImpares (int matriz[][]) {
+		int contador = 0;
+		
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz[0].length; j++) {
+				if (matriz[i][j]%2 != 0 )
+					contador++;
+			}
+		} return contador;
+	}
+	
+	public static boolean esDispersa (int matriz[][]) {
+		boolean hayCero;
+		
+		for (int i = 0; i < matriz.length; i++) {
+			hayCero = false;  //en cada vuelta lo inicializo en falso, lo reseteo para volver a comprobar que en cada fila hay algún cero
+			for (int j = 0; j < matriz[0].length; j++) { //compruebo primero las filas
+				if (matriz[i][j] == 0) {
+					hayCero = true;
+					break; //uso este break para salir y continuar con la función. una vez tenga un cero no hace falta seguir comprobando ni recorriendo más.
+				}
+			}
+			if (!hayCero) {
+			return false; //si no ha entrado nunca por aquí, continúa el recorrido a la siguiente
+		} 
+		}
+		
+		for (int i = 0; i < matriz.length; i++) {
+			hayCero = false;  //en cada vuelta lo inicializo en falso, lo reseteo para volver a comprobar que en cada fila hay algún cero
+			for (int j = 0; j < matriz[0].length; j++) { //le digo que recorra mientras la longitud y mientras que hayCero==false porque en el momento en el que es true, se puede salir del bucle y continuar. es escribir la salida del bucle de antes de otra manera que no sea el break
+				if (matriz[i][j] == 0) {//compruebo ahora si hay ceros en las columnas
+					hayCero = true;
+				}
+			}
+			if (!hayCero) {
+			return false; //si tampoco ha entrado por aquí, devolverá el siguiente true, diciéndonos que sí, que es dispersa
+		} 
+		}
+		return true;
+	}
+	
+	public static boolean esSimetrica (double matriz[][]) {
+		boolean simetrica = true;
+		
+		if (matriz.length != matriz[0].length) {
+			return false;
+		}
+		
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz[0].length; j++) {
+				if (matriz[i][j] != matriz[j][i]) {
+					return false;
+				}
+			}	
+		}return simetrica;
 	}
 }
