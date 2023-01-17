@@ -8,6 +8,7 @@ public class Ej13MatrizSimetrica {
 
 	public static void main(String[] args) {
 		// Desarrollar  un  programa  en  el  que  se  pida  al  usuario  una  matriz  de  dimensiones N ×M, y compruebe si la matriz es simétrica. (Los elementos de la matriz (i, j) y (j, i), si existen, son iguales).
+		//Una matriz simétrica es como doblar la matriz por la mitad (diagonal) y ser un espejo
 
 		System.out.println("El programa determinará si la matriz introducida por el usuario es simétrica.");
 		
