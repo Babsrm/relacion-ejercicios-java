@@ -13,22 +13,30 @@ import relacionEjerciciosObjetos.ejercicio01.Persona;
 public class Cuenta {
 	//variables
 	private Persona titular;
-	private double cantidad;
+	private double saldo;
+	
+	public static final double MAXCREDITO = 1000;
+	//las constantes suelen nombrarse en mayúscula. la creo para que, aún en números rojos, sólo pueda retirarse con un máximo de 1000€ negativos.
 	
 	//constructores
 	public Cuenta () {
 		this.titular = new Persona();
-		this.cantidad = 0;
+		this.saldo = 0;
 	}
 	
 	public Cuenta (Persona titular) {
 		setTitular(titular);
-		this.cantidad = 0;
+		this.saldo = 0;
 	}
 	
 	public Cuenta(Persona titular, double cantidad) {
 		setTitular(titular);
-		this.cantidad = cantidad;
+		this.saldo = cantidad;
+	}
+	
+	public Cuenta (String nombre, int edad, String dni, double saldo) { //este constructor facilita el crear una cuenta porque pide todos los datos en los parámetros. Los coge directamente aquí en vez de en la página principal
+		this.saldo=saldo;
+		this.titular = new Persona(nombre, edad, dni);
 	}
 
 	
@@ -42,7 +50,7 @@ public class Cuenta {
 	}
 
 	public double getCantidad() {
-		return cantidad;
+		return saldo;
 	}
 	
 	//otras funciones
@@ -51,15 +59,24 @@ public class Cuenta {
 		//del titular, dentro tiene un objeto que es persona y llamo a su función para coger el nombre
 	}
 	
-	public boolean ingresar(double d) {
+	public void ingresar(double d) {
 		if (d >0) {
-			this.cantidad = this.cantidad + d;
-		} return true;
+			this.saldo = this.saldo + d;
+		} 
 	}
 	
-	public boolean retirar (double cantidad) {
-		if (cantidad > 0) {
-			this.cantidad = this.cantidad - cantidad;
-		}return true;
+	public void retirar (double cantidad) {
+		if (cantidad > 0   // si la cantidad a retirar es mayor que cero, y el resultado del saldo
+				&& // menos la cantidad a retirar no se excede del máximo del crédito,
+			(this.saldo- cantidad) >-MAXCREDITO) {
+			this.saldo = this.saldo - cantidad; //se ejecuta la retirada
+		}
+	}
+	public void transferenciaA(Cuenta c, double importe) {
+		this.retirar(importe);; // de mi cuenta (esta) quito el importe de la transferencia
+		c.ingresar(importe);; //al saldo de la otra persona se le ingresa la cantidad
+		//this.saldo = this.saldo - importe; 
+		//c.saldo = c.saldo + importe; 
+		
 	}
 }

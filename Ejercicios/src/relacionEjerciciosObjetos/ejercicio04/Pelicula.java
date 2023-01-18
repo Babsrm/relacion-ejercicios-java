@@ -20,6 +20,7 @@ import java.util.Objects;
  */
 
 
+@SuppressWarnings("unused")
 public class Pelicula {
 	
 	//variables
