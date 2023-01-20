@@ -29,7 +29,7 @@ public class Pelicula {
 	private GeneroPelicula genero;
 	private int duracion;
 	private int year;
-	private double clasificacion;
+	private double calificacion;
 	
 	//constructores
 	public Pelicula () {
@@ -38,7 +38,7 @@ public class Pelicula {
 		this.genero = GeneroPelicula.ACCION;
 		this.duracion = 0;
 		this.year = 0000;
-		this.clasificacion = 0;
+		this.calificacion = 0;
 	}
 	
 	public Pelicula(String nombre, String director, GeneroPelicula genero, int duracion, int year,
@@ -97,17 +97,17 @@ public class Pelicula {
 	}
 
 	public double getClasificacion() {
-		return clasificacion;
+		return calificacion;
 	}
 
 	private void setClasificacion(double clasificacion) {
 		if (clasificacion >= 0 && clasificacion <=10)
-		this.clasificacion = clasificacion;
+		this.calificacion = clasificacion;
 	}
 	
 	
 	public String mostrarPelicula() {
-		return "Pelicula: \nNombre=" + nombre + ",\ndirector=" + director + ",\ngenero=" + genero + ",\nduracion=" + duracion + ",\nyear=" + year + ",\nclasificacion=" + clasificacion;
+		return "Pelicula: \nNombre=" + nombre + ",\ndirector=" + director + ",\ngenero=" + genero + ",\nduracion=" + duracion + ",\nyear=" + year + ",\nclasificacion=" + calificacion;
 	}
 	
 	public boolean esPeliculaEpica() {
@@ -116,21 +116,23 @@ public class Pelicula {
 		} else { return false;}	
 }
 	public String calcularValoracion () {
-		if (clasificacion<=2) {
+		if (calificacion<=2) {
 			return "muy mala";
-		} else if (clasificacion<=5) {
+		} else if (calificacion<=5) {
 			return "mala";
-		} else if (clasificacion <=7) {
+		} else if (calificacion <=7) {
 			return "regular";
-		} else if (clasificacion <=8) {
+		} else if (calificacion <=8) {
 			return "buena";
-		} else if(clasificacion <=10) {
+		} else if(calificacion <=10) {
 			return "excelente";
 		}
 			return "error";
 	}
 	
 	public static boolean esSimilar(Pelicula pelicula1, Pelicula pelicula2) {
+		//si solo le paso la pelicula2 como parámetro, trabajaria con el this.pelicula como si fuese la pelicula1
+		//en ese caso, ya no sería un método static. se invocaría como p1.esSimilar(p2);
 		if (pelicula1.genero.equals(pelicula2.genero)
 				&&
 				pelicula1.calcularValoracion().equals(pelicula2.calcularValoracion()))

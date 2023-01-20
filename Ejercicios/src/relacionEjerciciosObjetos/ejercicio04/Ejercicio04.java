@@ -1,12 +1,14 @@
 package relacionEjerciciosObjetos.ejercicio04;
 
+import java.util.Scanner;
+
 public class Ejercicio04 {
 
 	public static void main(String[] args) {
 		//pruebas clase Pelicula
 		Pelicula p1 = new Pelicula("Ghandi", "Richard Attenborough", GeneroPelicula.DRAMA, 191, 1982, 8.1);
 		Pelicula p2 = new Pelicula("Thor", "Kenneth Branagh",GeneroPelicula.ACCION, 115, 2011, 7.0);
-		Pelicula ComprobacionesControl = new Pelicula ("clasifficacion negativa", "año y duracion fuera rango", GeneroPelicula.SUSPENSO, 999, 3000, -8);
+		Pelicula ComprobacionesControl = new Pelicula ("clasifficacion negativa", "año y duracion fuera rango", GeneroPelicula.CIENCIAFICCION, 999, 3000, -8);
 		Pelicula ps1 = new Pelicula("Similar1", "aaaaa", GeneroPelicula.COMEDIA, 191, 1982, 9.0);
 		Pelicula ps2 = new Pelicula("Similar2", "Keeeee",GeneroPelicula.COMEDIA, 115, 2011, 8.2);
 		
@@ -29,6 +31,17 @@ public class Ejercicio04 {
 
 		if (Pelicula.esSimilar(ps1, ps2)) {
 			System.out.println(ps1.getNombre() +" y " +ps2.getNombre() +" son películas similares");
-		};
+		}
+		
+		Scanner teclado = new Scanner (System.in);
+		System.out.println("Introduce el género: ");
+		String gen = teclado.nextLine();
+		GeneroPelicula generops3 = GeneroPelicula.getGenero(gen);
+		
+		Pelicula ps3 = new Pelicula("Similar2", "Keeeee",generops3, 115, 2011, 8.2);
+		System.out.println(ps3.mostrarPelicula());
+		
+		teclado.close();
+		
 	}
 }

@@ -1,7 +1,36 @@
 package relacionEjerciciosObjetos.ejercicio04;
 
 public enum GeneroPelicula {
-	ACCION, COMEDIA, DRAMA, SUSPENSO;
+	ACCION(0, "Acción"), 
+	COMEDIA (1, "Comedia"),
+	DRAMA(2,"Drama"),
+	CIENCIAFICCION(3,"Ciencia ficción");
+	
+	private int id;
+	private String nombre;
+
+	GeneroPelicula(int id, String nombre) {
+		this.id = id;
+		this.nombre = nombre;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+	
+	public static GeneroPelicula getGenero(String nombre) {
+		switch(nombre.toLowerCase()) {
+		case "acción": return ACCION;
+		case "comedia": return COMEDIA;
+		case "drama": return DRAMA;
+		case "ciencia ficción": return CIENCIAFICCION;
+		default: return ACCION;
+		}
+	}
 }
 
 /*
