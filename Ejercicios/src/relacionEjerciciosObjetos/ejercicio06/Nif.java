@@ -66,6 +66,7 @@ public class Nif {
 		long num = teclado.nextLong();
 		setNum(num);
 		setLetra(calculoLetra(num));
+		teclado.close();
 	}
 	public String mostrarDni() {
 		return "El Nif introducido es: " + num + "-" + letra + ".";
